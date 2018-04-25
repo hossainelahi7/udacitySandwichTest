@@ -1,15 +1,16 @@
 package com.udacity.sandwichclub.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Sandwich {
 
-    private String mainName;
-    private List<String> alsoKnownAs = null;
-    private String placeOfOrigin;
-    private String description;
-    private String image;
-    private List<String> ingredients = null;
+    private String mainName = "";
+    private List<String> alsoKnownAs = Arrays.asList("");
+    private String placeOfOrigin = "";
+    private String description = "";
+    private String image = "";
+    private List<String> ingredients = Arrays.asList("");
 
     /**
      * No args constructor for use in serialization
