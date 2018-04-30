@@ -13,7 +13,7 @@ import java.util.List;
 
 public class JsonUtils {
 
-    private class Key{
+    public class Key{
         public static final String NAME = "name";
         public static final String MAIN_NAME = "mainName";
         public static final String AKA = "alsoKnownAs";
@@ -22,6 +22,8 @@ public class JsonUtils {
         public static final String IMAGE_LINK = "image";
         public static final String INGREDIENTS = "ingredients";
     }
+
+    private static final String TAG = JsonUtils.class.getSimpleName();
 
     public static Sandwich parseSandwichJson(String data) {
         JSONObject json;
@@ -67,7 +69,7 @@ public class JsonUtils {
                     sandwich.setIngredients(ingredients);
                 }
             } catch (JSONException e) {
-                Log.e("JsonUtil", "error triggered during reading json object. "+e.getMessage());
+                Log.e(TAG, "error triggered during reading json object. "+e.getMessage());
             }
         }
         return sandwich;

@@ -16,11 +16,11 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    private static TextView NameView;
-    private static TextView AlsoKnownAsView;
-    private static TextView PlaceOfOriginView;
-    private static TextView DescriptionView;
-    private static TextView IngradienceView;
+    private static TextView nameView;
+    private static TextView alsoKnownAsView;
+    private static TextView placeOfOriginView;
+    private static TextView descriptionView;
+    private static TextView ingradienceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,11 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
-        NameView = findViewById(R.id.origin_tv);
-        AlsoKnownAsView = findViewById(R.id.also_known_tv);
-        PlaceOfOriginView = findViewById(R.id.place_tv);
-        DescriptionView = findViewById(R.id.description_tv);
-        IngradienceView = findViewById(R.id.ingredients_tv);
+        nameView = findViewById(R.id.origin_tv);
+        alsoKnownAsView = findViewById(R.id.also_known_tv);
+        placeOfOriginView = findViewById(R.id.place_tv);
+        descriptionView = findViewById(R.id.description_tv);
+        ingradienceView = findViewById(R.id.ingredients_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -58,6 +58,8 @@ public class DetailActivity extends AppCompatActivity {
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .placeholder(R.mipmap.placeholder)
+                .error(R.mipmap.errorimage)
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
@@ -69,10 +71,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        NameView.setText(sandwich.getMainName());
-        AlsoKnownAsView.setText(sandwich.getAlsoKnownAs().toString());
-        PlaceOfOriginView.setText(sandwich.getPlaceOfOrigin());
-        DescriptionView.setText(sandwich.getDescription());
-        IngradienceView.setText(sandwich.getIngredients().toString());
+        nameView.setText(sandwich.getMainName());
+        alsoKnownAsView.setText(sandwich.getAlsoKnownAs().toString());
+        placeOfOriginView.setText(sandwich.getPlaceOfOrigin());
+        descriptionView.setText(sandwich.getDescription());
+        ingradienceView.setText(sandwich.getIngredients().toString());
     }
 }
